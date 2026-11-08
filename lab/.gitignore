@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pcap
+pox_ddos_lab.log
+pox.log
+venv/
+*.keras
+*.npz
