@@ -79,6 +79,7 @@ def run():
     # =============================================================
     # 2. 30-Second Attack Capture
     # =============================================================
+    attack_pcap = os.path.join(captures_dir, 'attack_30s.pcap')
     os.system(f'rm -f {attack_pcap}')
     
     info('\n=== [Starting 30-second Attack Capture] ===\n')

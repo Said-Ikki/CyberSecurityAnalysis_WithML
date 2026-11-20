@@ -5,12 +5,14 @@ This directory contains the Mininet network topology, POX OpenFlow controller, a
 ## What's in `lab/`
 
 - `topo.py`: Mininet single-switch topology (4 hosts: `h1` attacker, `h2` victim server, `h3`/`h4` benign users).
-- `ddos_lab.py`: POX controller component (L2 learning switch + flow stats polling every 5s + packet-in logging).
+- `ddos_lab.py`: POX controller component (L2 learning switch, 5s flow stats polling, live ML scoring, and optional drop-rule mitigation).
 - `test_flow_stats.py`: Quick test checking that the controller receives flow statistics from switch `s1`.
-- `run_experiment.py`: Experiment running baseline traffic, a spoofed SYN flood, and post-attack recovery.
+- `run_experiment.py`: Experiment running baseline traffic, a spoofed SYN flood, and post-attack recovery, with CSV logging.
+- `run_all_models.py`: Runs the live flood experiment across all three models (`ann`, `paper_cnn`, `custom_cnn`) and averages the results.
+- `run_benchmark.py`: Offline PCAP flow benchmark and CPU inference latency profiler.
 - `capture_traffic.py`: Captures benign and attack `.pcap` files on the victim's switch port (`s1-eth2`).
 - `check_env.sh`: Non-destructive verification script that checks the environment and runs the test suite.
-- `port_weights.py` & `scoring.py`: Model loader and real-time inference scoring interface for live flow stats.
+- `scoring.py`, `test_scoring.py`, `eval_logger.py`, `port_weights.py`: Model loader (pure NumPy inference for the 12-feature `.pt` models), CSV metric logger, and weight verification helpers.
 
 ## How to Set Up and Test Mininet (If You Want to Run It Yourself)
 
